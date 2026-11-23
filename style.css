@@ -1,0 +1,24 @@
+:root { --vert: #1f5c3a; --clair: #eef5f0; }
+* { box-sizing: border-box; }
+body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #fafafa; color: #222; }
+header { background: var(--vert); color: #fff; padding: 12px 20px; display: flex;
+         justify-content: space-between; align-items: center; flex-wrap: wrap; }
+header h1 { font-size: 1.2rem; margin: 0; }
+nav a { color: #fff; margin-left: 16px; }
+main { max-width: 640px; margin: 24px auto; padding: 0 16px; }
+label { display: block; margin-top: 14px; font-weight: 600; }
+label.inline { display: inline-block; margin-right: 14px; font-weight: 400; }
+input, select, textarea { width: 100%; padding: 9px; margin-top: 4px; font: inherit;
+         border: 1px solid #bbb; border-radius: 6px; }
+input[type=radio] { width: auto; }
+fieldset { margin-top: 16px; border: 1px solid #ccc; border-radius: 6px; }
+button, .bouton { background: var(--vert); color: #fff; border: 0; padding: 11px 22px;
+         margin-top: 18px; border-radius: 6px; font: inherit; cursor: pointer;
+         text-decoration: none; display: inline-block; }
+.erreurs { background: #fdeaea; border: 1px solid #d33; padding: 4px 16px; border-radius: 6px; }
+.piege { position: absolute; left: -9999px; }
+.barre { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.barre .nom { width: 100px; }
+.barre .trait { background: var(--vert); height: 18px; border-radius: 3px; min-width: 4px; }
+.liste li { margin: 6px 0; }
+footer { text-align: center; color: #777; font-size: .85rem; padding: 24px; }

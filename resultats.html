@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block contenu %}
+<h2>Résultats en direct</h2>
+<p><strong>{{ total }}</strong> réponse{{ 's' if total > 1 }} reçue{{ 's' if total > 1 }}.</p>
+
+<h3>Technologie préférée</h3>
+{% for techno, n in par_techno %}
+<div class="barre">
+  <span class="nom">{{ techno }}</span>
+  <span class="trait" style="width: {{ (n / plus_grand * 100) | round | int }}%"></span>
+  <span class="nb">{{ n }}</span>
+</div>
+{% else %}
+<p>Aucune réponse pour le moment.</p>
+{% endfor %}
+
+<h3>Les 10 dernières réponses</h3>
+<ul class="liste">
+  {% for prenom, techno, avis in derniers %}
+  <li><strong>{{ prenom }}</strong> ({{ techno }}){% if avis %} : « {{ avis }} »{% endif %}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
