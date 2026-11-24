@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block contenu %}
+<h2>Donnez votre avis</h2>
+{% if erreurs %}
+<div class="erreurs" role="alert">
+  <ul>{% for e in erreurs %}<li>{{ e }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
+<form method="post" action="{{ url_for('accueil') }}">
+  <label for="prenom">Prénom</label>
+  <input id="prenom" name="prenom" maxlength="50" required value="{{ d.get('prenom', '') }}">
+
+  <label for="filiere">Filière</label>
+  <select id="filiere" name="filiere" required>
+    <option value="">-- choisir --</option>
+    {% for f in listes.filieres %}
+    <option value="{{ f }}" {{ 'selected' if d.get('filiere') == f }}>{{ f }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="niveau">Votre niveau en programmation</label>
+  <select id="niveau" name="niveau" required>
+    <option value="">-- choisir --</option>
+    {% for n in listes.niveaux %}
+    <option value="{{ n }}" {{ 'selected' if d.get('niveau') == n }}>{{ n }}</option>
+    {% endfor %}
+  </select>
+
+  <fieldset>
+    <legend>Technologie préférée</legend>
+    {% for t in listes.technos %}
+    <label class="inline"><input type="radio" name="techno" value="{{ t }}" required
+      {{ 'checked' if d.get('techno') == t }}> {{ t }}</label>
+    {% endfor %}
+  </fieldset>
+
+  <label for="avis">Un commentaire (facultatif, 300 caractères)</label>
+  <textarea id="avis" name="avis" rows="3" maxlength="300">{{ d.get('avis', '') }}</textarea>
+
+  <!-- Champ-piège : invisible pour les humains, rempli par les robots -->
+  <div class="piege" aria-hidden="true">
+    <label>Ne pas remplir <input name="site_web" tabindex="-1" autocomplete="off"></label>
+  </div>
+
+  <button type="submit">Envoyer</button>
+</form>
+{% endblock %}
